@@ -1,30 +1,32 @@
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+function Navbar({ isAuthenticated, onLogout }) {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
+  const handleLogoutClick = () => {
+    onLogout();
     navigate('/');
   };
 
   return (
-    <nav className="bg-white shadow p-4">
+    <nav className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-pink-600">StayFinder</Link>
-        <div>
+        <Link to="/home" className="text-xl font-bold">StayFinder</Link>
+        <div className="space-x-4">
           {isAuthenticated ? (
             <>
-              <Link to="/host-dashboard" className="mr-4 text-gray-700 hover:text-pink-600">Host Dashboard</Link>
-              <button onClick={handleLogout} className="text-gray-700 hover:text-pink-600">Logout</button>
+              <Link to="/home" className="hover:underline">Home</Link>
+              <button
+                onClick={handleLogoutClick}
+                className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="mr-4 text-gray-700 hover:text-pink-600">Login</Link>
-              <Link to="/register" className="text-gray-700 hover:text-pink-600">Register</Link>
+              <Link to="/" className="hover:underline">Login</Link>
+              <Link to="/register" className="hover:underline">Register</Link>
             </>
           )}
         </div>
