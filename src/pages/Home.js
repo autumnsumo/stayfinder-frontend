@@ -63,7 +63,9 @@ function Home() {
           name="startDate"
           className="p-2 border rounded"
         />
-        <button type="submit" className="bg-pink-600 text-white p-2 rounded hover:bg-pink-700">Search</button>
+        <button type="submit" className="bg-pink-600 text-white p-2 rounded hover:bg-pink-700">
+          Search
+        </button>
       </form>
       {error && <div className="text-red-600 mb-4">{error}</div>}
       {listings.length === 0 && !error ? (

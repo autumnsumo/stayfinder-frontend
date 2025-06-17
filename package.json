@@ -22,8 +22,8 @@
   },
   "resolutions": {
     "svgo": "^2.8.0",
-    "resolve-url-loader": "^5.0.0",
-    "webpack-dev-server": "^5.3.0"
+    "resolve-url-loader": "5.0.0",
+    "webpack-dev-server": "5.3.0"
   },
   "eslintConfig": {
     "extends": [
